@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>NG Practice</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+<script src="angularjs/angular.js"></script>
+<script src="angularjs/angular-route.js"></script>
+<script src="appSource/index1.js"></script>
+<style>
+	.warning-lebel{
+	color: black;
+	background-color: yellow
+
+	}
+</style>
+</head>
+
+<body ng-app ="apps">
+	<div ng-controller="todoCtrl">
+	<h1 class="page-item">{{todoName}}<span class="label label-default">Total todos : {{todos.length}} </span>
+		 - Incompleted :<span ng-class="warning()"> {{incomplete()}} </span></h1>
+	<div>
+		<div class="input-group">
+			<input type="text" ng-model='todoInput' class="form-control"/>
+			<button type="button" class="btn btn-primary" ng-click="addToDo()">Add</button>
+		</div>
+	<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+			<th>Description</th>
+			<th>Done</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="todo in todos">
+			<td>{{todo.name}}</td>
+			<td>{{todo.complete}}</td>
+			<td><input type="checkbox" ng-model="todo.complete"/></td>
+			
+			</tr>
+		</tbody>
+	</table>
+	<a href="#!test">Test</a>
+	<ng-view></ng-view>
+	</div>
+	</div>
+
+</div>
+
+</body>
+</html>
